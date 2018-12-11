@@ -1,1 +1,5 @@
 @import "./reset.scss";
+@import "./vars.scss";
+body {
+  color: $gray;
+}

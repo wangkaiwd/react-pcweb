@@ -92,3 +92,10 @@ body {
 img {
   vertical-align: top;
 }
+
+input {
+  &:focus {
+    outline: none;
+  }
+  border: none;
+}

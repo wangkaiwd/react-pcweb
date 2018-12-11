@@ -225,7 +225,8 @@ module.exports = {
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
       styles: path.resolve(__dirname, '../src/assets/styles/'),
-      '@': path.resolve(__dirname, '../src')
+      '@': path.resolve(__dirname, '../src'),
+      'images': path.resolve(__dirname, '../src/assets/images/')
     },
     plugins: [
       // Adds support for installing with Plug'n'Play, leading to faster installs and adding
