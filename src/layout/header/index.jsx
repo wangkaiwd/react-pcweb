@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BaseIcon from '@/components/baseIcon'
 import styles from './index.module'
 class Header extends Component {
   render() {
@@ -14,13 +15,17 @@ class Header extends Component {
             </div>
           </div>
           <div className={styles.right}>
-            <div className={styles.navItem}>Aa</div>
+            <div className={styles.navItem}>
+              <BaseIcon name="Aa" />
+            </div>
             <div className={styles.navItem}>登录</div>
           </div>
         </div>
         <div className={styles.personal}>
           <p className={styles.register}>注册</p>
-          <p className={styles.write}>写文章</p>
+          <p className={styles.write}>
+            <BaseIcon name="pen" />写文章
+          </p>
         </div>
       </div>
     );
