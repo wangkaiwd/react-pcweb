@@ -87,3 +87,8 @@ th {
 body {
   line-height: 1;
 }
+
+// 去除图片间隙
+img {
+  vertical-align: top;
+}

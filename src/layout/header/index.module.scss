@@ -1,4 +1,11 @@
+@import "~styles/vars";
 .header {
   height: 58px;
-  background-color: pink;
+  border-bottom: $border-base;
+  .logo {
+    height: 100%;
+  }
+  &-nav {
+    @include center;
+  }
 }

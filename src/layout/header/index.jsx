@@ -5,8 +5,11 @@ class Header extends Component {
     return (
       <div className={styles.header}>
         <a href="javascript:;">
-          <img src={require('@/assets/images/logo.png')} alt="" />
+          <img className={styles.logo} src={require('@/assets/images/logo.png')} alt="" />
         </a>
+        <div className={styles.headerNav}>
+        
+        </div>
 
       </div>
     );
