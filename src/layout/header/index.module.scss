@@ -31,23 +31,64 @@
     padding: $space-base;
   }
   .inputBox {
+    &.changeEnter {
+      .input {
+        width: 160px;
+      }
+    }
+    &.changeEnterActive,
+    &.changeEnterDone {
+      .input {
+        width: 240px;
+        transition: all .3s;
+      }
+      .searchWrapper {
+        color: $white;
+        background-color: $gray;
+      }
+    }
+    &.changeExit {
+      .input {
+        width: 240px;
+      }
+    }
+    &.changeExitActive,
+    &.changeExitDone {
+      .input {
+        width: 160px;
+        transition: all .3s;
+      }
+    }
     position: relative;
     display: flex;
     margin-top: calc((58px - 38px)/2);
     height: 38px;
     .input {
       padding-left: $space-lg;
+      padding-right: 36px;
       height: 100%;
       width: 160px;
       border-radius: $border-radius-lg;
-      background-color: $gray-bg;
+      background-color: $gray-bg; // transition: all .6s; // 先通过transition实现动画效果
+      // &:focus {
+      //   width: 260px;
+      //   &+.searchWrapper {
+      //     background-color: $gray;
+      //     color: $white;
+      //   }
+      // }
     }
-    .searchIcon {
+    .searchWrapper {
       position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      margin-right: $space-base;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      right: $space-sm;
+      top: 4px;
+      height: 100%;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
     }
   }
   .personal {
