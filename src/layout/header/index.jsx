@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BaseIcon from '@/components/baseIcon'
+import classNames from 'classnames'
 import styles from './index.module'
 class Header extends Component {
   render() {
@@ -8,10 +9,11 @@ class Header extends Component {
         <img className={styles.logo} src={require('images/logo.png')} alt="" />
         <div className={styles.headerNav}>
           <div className={styles.left}>
-            <div className={`${styles.navItem} ${styles.active}`}>首页</div>
+            <div className={classNames(styles.navItem, styles.active)}>首页</div>
             <div className={styles.navItem}>下载App</div>
             <div className={styles.inputBox}>
               <input className={styles.input} type="text" placeholder="搜索" />
+              <BaseIcon className={styles.searchIcon} name="search" />
             </div>
           </div>
           <div className={styles.right}>

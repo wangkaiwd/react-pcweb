@@ -31,15 +31,23 @@
     padding: $space-base;
   }
   .inputBox {
+    position: relative;
+    display: flex;
     margin-top: calc((58px - 38px)/2);
-    width: 160px;
     height: 38px;
     .input {
       padding-left: $space-lg;
       height: 100%;
-      width: 100%;
+      width: 160px;
       border-radius: $border-radius-lg;
       background-color: $gray-bg;
+    }
+    .searchIcon {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-right: $space-base;
     }
   }
   .personal {
