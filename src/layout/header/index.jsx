@@ -3,6 +3,14 @@ import BaseIcon from '@/components/baseIcon'
 import classNames from 'classnames'
 import styles from './index.module'
 import { CSSTransition } from 'react-transition-group'
+import { connect } from 'react-redux'
+
+const mapStateToProps = (state) => {
+  console.log('root', state)
+  return {
+  }
+}
+@connect(mapStateToProps, null)
 class Header extends Component {
   state = {
     expand: false
