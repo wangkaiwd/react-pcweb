@@ -23,16 +23,14 @@ const mapDispatchToProps = (dispatch) => {
 }
 @connect(mapStateToProps, mapDispatchToProps)
 class Header extends Component {
-  // state = {
-  //   expand: false
-  // }
-  // onFocus = () => {
-  //   toggleExpand(!this.props.expand)
-  //   this.setState({ expand: true })
-  // }
-  // onBlur = () => {
-  //   this.setState({ expand: false })
-  // }
+  focusClasses = {
+    enter: styles.changeEnter,
+    enterActive: styles.changeEnterActive,
+    enterDone: styles.changeEnterDone,
+    exit: styles.changeExit,
+    exitActive: styles.changeExitActive,
+    exitDone: styles.changeExitDone
+  }
   render() {
     const { expand, onFocus, onBlur } = this.props
     return (
@@ -45,14 +43,7 @@ class Header extends Component {
             <CSSTransition
               in={expand}
               timeout={300}
-              classNames={{
-                enter: styles.changeEnter,
-                enterActive: styles.changeEnterActive,
-                enterDone: styles.changeEnterDone,
-                exit: styles.changeExit,
-                exitActive: styles.changeExitActive,
-                exitDone: styles.changeExitDone
-              }}
+              classNames={this.focusClasses}
             >
               <div className={styles.inputBox}>
                 <input
@@ -67,6 +58,15 @@ class Header extends Component {
                 </div>
               </div>
             </CSSTransition>
+            <div className={styles.switch}>
+              <div className={styles.switchTitle}>
+                <h3>热门搜索</h3>
+                <span><BaseIcon name="" />换一批</span>
+              </div>
+              <div className={styles.switchContent}>
+                <div className={styles.switchItem}></div>
+              </div>
+            </div>
           </div>
           <div className={styles.right}>
             <div className={styles.navItem}>
