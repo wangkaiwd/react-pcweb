@@ -91,6 +91,18 @@
       border-radius: 50%;
     }
   }
+  .switch {
+    position: absolute;
+    top: 100%;
+    margin-top: $space-sm;
+    left: 0;
+    padding: 20px 20px 10px;
+    width: 250px;
+    height: 160px;
+    background-color: #fff;
+    border-bottom: 1px solid $border-color;
+    border-radius: $border-radius-sm;
+  }
   .personal {
     flex: 1;
     display: flex;

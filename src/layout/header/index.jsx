@@ -56,17 +56,17 @@ class Header extends Component {
                 <div className={styles.searchWrapper}>
                   <BaseIcon className={styles.searchIcon} name="search" />
                 </div>
+                <div className={styles.switch}>
+                  <div className={styles.switchTitle}>
+                    <h3>热门搜索</h3>
+                    <span><BaseIcon name="" />换一批</span>
+                  </div>
+                  <div className={styles.switchContent}>
+                    <div className={styles.switchItem}></div>
+                  </div>
+                </div>
               </div>
             </CSSTransition>
-            <div className={styles.switch}>
-              <div className={styles.switchTitle}>
-                <h3>热门搜索</h3>
-                <span><BaseIcon name="" />换一批</span>
-              </div>
-              <div className={styles.switchContent}>
-                <div className={styles.switchItem}></div>
-              </div>
-            </div>
           </div>
           <div className={styles.right}>
             <div className={styles.navItem}>
