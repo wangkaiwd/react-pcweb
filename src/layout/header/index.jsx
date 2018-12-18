@@ -5,6 +5,7 @@ import styles from './index.module'
 import { closeExpand, openExpand } from './store/actionCreators'
 import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
+import { fetchDemo } from '@/api/header'
 
 const mapStateToProps = (state) => {
   return {
@@ -30,6 +31,16 @@ class Header extends Component {
     exit: styles.changeExit,
     exitActive: styles.changeExitActive,
     exitDone: styles.changeExitDone
+  }
+  componentDidMount() {
+    fetchDemo().then(
+      res => {
+        console.log(res)
+      },
+      err => {
+        console.log(err)
+      }
+    )
   }
   render() {
     const { expand, onFocus, onBlur } = this.props
