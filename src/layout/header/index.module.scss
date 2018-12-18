@@ -94,14 +94,64 @@
   .switch {
     position: absolute;
     top: 100%;
-    margin-top: $space-sm;
+    margin-top: 10px;
     left: 0;
     padding: 20px 20px 10px;
     width: 250px;
     height: 160px;
-    background-color: #fff;
+    background-color: $white;
     border-bottom: 1px solid $border-color;
     border-radius: $border-radius-sm;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+    color: $gray;
+    font-size: $font-base;
+  }
+  .switchTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .rotate {
+      // transform: rotate(360deg);
+      // transition: all 1s; 
+      animation: rotate 1s linear;
+    }
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(360deg);
+      }
+      100% {
+        transform: rotate(720deg);
+      }
+    }
+  }
+  .switchIcon {
+    font-size: $font-sm;
+    cursor: pointer;
+  }
+  .switchContent {
+    margin-right: -10px;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: $font-sm;
+  }
+  .switchItem {
+    margin-right: 10px;
+    padding: 2px 6px;
+    border: 1px solid $shallow-gray;
+    border-radius: 3px;
+    margin-top: 14px;
+  }
+  .triangle {
+    position: absolute;
+    bottom: 100%;
+    left: 10px;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, .2));
   }
   .personal {
     flex: 1;

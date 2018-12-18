@@ -5,7 +5,7 @@ import styles from './index.module'
 import { closeExpand, openExpand } from './store/actionCreators'
 import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
-import { fetchDemo } from '@/api/header'
+import { fetchSearchHot } from '@/api/header'
 
 const mapStateToProps = (state) => {
   return {
@@ -24,6 +24,10 @@ const mapDispatchToProps = (dispatch) => {
 }
 @connect(mapStateToProps, mapDispatchToProps)
 class Header extends Component {
+  state = {
+    searchHotList: [],
+    isRotate: false
+  }
   focusClasses = {
     enter: styles.changeEnter,
     enterActive: styles.changeEnterActive,
@@ -33,17 +37,42 @@ class Header extends Component {
     exitDone: styles.changeExitDone
   }
   componentDidMount() {
-    fetchDemo().then(
+    this.getSearchHot()
+  }
+  getSearchHot = () => {
+    fetchSearchHot().then(
       res => {
         console.log(res)
-      },
-      err => {
-        console.log(err)
+        this.setState({ searchHotList: res.list })
       }
     )
   }
+  changeList = () => {
+    this.setState({ isRotate: true }, () => {
+      setTimeout(() => {
+        this.setState({ isRotate: false })
+      }, 1000);
+    })
+  }
+  hotSearchHtml = () => {
+    const { searchHotList } = this.state
+    // if语句和for循环在javascript中不是表达式，因此它们不能直接在jsx中使用，
+    // 但是你可以将它们放在周围的代码中
+    return searchHotList.map((list, i) => {
+      // 这里当条件不满足的情况下会返回undefined，
+      // 布尔值、Null和Undefined被忽略，所以不符合情况下返回undefined被忽略
+      if (i < 10) {
+        return (
+          <div key={i} className={styles.switchItem}>
+            {list}
+          </div>
+        )
+      }
+    })
+  }
   render() {
     const { expand, onFocus, onBlur } = this.props
+    const { isRotate } = this.state
     return (
       <div className={styles.header}>
         <img className={styles.logo} src={require('images/logo.png')} alt="" />
@@ -68,12 +97,19 @@ class Header extends Component {
                   <BaseIcon className={styles.searchIcon} name="search" />
                 </div>
                 <div className={styles.switch}>
+                  <div className={styles.triangle}></div>
                   <div className={styles.switchTitle}>
                     <h3>热门搜索</h3>
-                    <span><BaseIcon name="" />换一批</span>
+                    <span className={styles.switchIcon} onClick={this.changeList}>
+                      <BaseIcon
+                        name="circle"
+                        className={classNames({ [styles.rotate]: isRotate })}
+                      />
+                      换一批
+                      </span>
                   </div>
                   <div className={styles.switchContent}>
-                    <div className={styles.switchItem}></div>
+                    {this.hotSearchHtml()}
                   </div>
                 </div>
               </div>

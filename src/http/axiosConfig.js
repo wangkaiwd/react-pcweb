@@ -1,9 +1,9 @@
 import axios from 'axios'
 import qs from 'qs'
-const baseURL = 'http://127.0.0.1:3000/mock/18/admin/'
+const baseURL = 'https://easy-mock.com/mock/5c0ccee39ae7bb46cb933da4/js/'
 const instance = axios.create({
   baseURL,
-  timeout: 1000
+  timeout: 10000
 })
 instance.interceptors.request.use(
   config => {

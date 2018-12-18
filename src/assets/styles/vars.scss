@@ -3,6 +3,7 @@
 $white: #fff;
 $black: #333;
 $gray: #969696;
+$shallow-gray: #ddd;
 $orange: #ea6f5a;
 $border-color: #f0f0f0;
 // 背景色
@@ -10,10 +11,14 @@ $gray-bg: #eee;
 // 边框
 $border-base: 1px solid $border-color;
 // 间距
-$space-base: 15px;
 $space-lg: 20px;
+$space-base: 15px;
 $space-sm: 5px;
 // 圆角
 $border-radius-base: 20px;
 $border-radius-lg: 40px;
 $border-radius-sm: 8px;
+// 字体大小
+$font-lg: 18px;
+$font-base: 14px;
+$font-sm: 12px;
