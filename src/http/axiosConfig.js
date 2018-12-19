@@ -22,8 +22,10 @@ instance.interceptors.response.use(
     const { status, data } = res
     if (status === 200 && data.code === 0) {
       return data.data
+    } else {
+      console.log('response', res)
+      return Promise.reject(res)
     }
-    return data.data
   },
   err => {
     console.log('服务器响应失败！', err)

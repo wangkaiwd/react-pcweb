@@ -7,7 +7,9 @@ export const ajax = (url, method = "post") => {
         url,
         method,
         [paramsKey]: params
-      }).then(res => resolve(res), err => reject(err))
+      }).then(res => {
+        resolve(res)
+      }, err => reject(err))
     })
   }
 }
