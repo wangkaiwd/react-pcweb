@@ -15,6 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onFocus: () => {
+      console.log('click');
       dispatch(openExpand(true))
     },
     onBlur() {
@@ -40,24 +41,21 @@ class Header extends Component {
     this.getSearchHot()
   }
   getSearchHot = () => {
-    fetchSearchHot().then(
-      res => {
-        console.log(res)
-        this.setState({ searchHotList: res.list })
-      }
-    )
+    fetchSearchHot().then(res => { this.setState({ searchHotList: res.list }) })
   }
   changeList = () => {
-    this.setState({ isRotate: true }, () => {
-      setTimeout(() => {
-        this.setState({ isRotate: false })
-      }, 1000);
-    })
+    // this.setState({ isRotate: true }, () => {
+    //   setTimeout(() => {
+    //     this.setState({ isRotate: false })
+    //   }, 1000);
+    // })
+    this.setState({ isRotate: !this.state.isRotate })
   }
   hotSearchHtml = () => {
     const { searchHotList } = this.state
     // if语句和for循环在javascript中不是表达式，因此它们不能直接在jsx中使用，
     // 但是你可以将它们放在周围的代码中
+    // null，布尔值，undefined会被忽略
     return searchHotList.map((list, i) => {
       // 这里当条件不满足的情况下会返回undefined，
       // 布尔值、Null和Undefined被忽略，所以不符合情况下返回undefined被忽略
@@ -70,12 +68,17 @@ class Header extends Component {
       }
     })
   }
+  // onSwitchClick = () => {
+
+  // }
   render() {
     const { expand, onFocus, onBlur } = this.props
     const { isRotate } = this.state
     return (
       <div className={styles.header}>
-        <img className={styles.logo} src={require('images/logo.png')} alt="" />
+        <div className={styles.logoWrapper}>
+          <img className={styles.logo} src={require('images/logo.png')} alt="" />
+        </div>
         <div className={styles.headerNav}>
           <div className={styles.left}>
             <div className={classNames(styles.navItem, styles.active)}>首页</div>
@@ -96,22 +99,34 @@ class Header extends Component {
                 <div className={styles.searchWrapper}>
                   <BaseIcon className={styles.searchIcon} name="search" />
                 </div>
-                <div className={styles.switch}>
-                  <div className={styles.triangle}></div>
-                  <div className={styles.switchTitle}>
-                    <h3>热门搜索</h3>
-                    <span className={styles.switchIcon} onClick={this.changeList}>
-                      <BaseIcon
-                        name="circle"
-                        className={classNames({ [styles.rotate]: isRotate })}
-                      />
-                      换一批
+                {expand &&
+                  <div className={styles.switch} onClick={onFocus}>
+                    <div className={styles.triangle}></div>
+                    <div className={styles.switchTitle}>
+                      <h3>热门搜索</h3>
+                      <span className={styles.switchIcon} onClick={this.changeList}>
+                        <CSSTransition
+                          in={isRotate}
+                          timeout={1000}
+                          classNames={{
+                            enter: styles.scaleEnter,
+                            enterActive: styles.scaleEnterActive,
+                            enterDone: styles.scaleEnterDone,
+                            exit: styles.scaleExit,
+                            exitActive: styles.scaleExitActive,
+                            exitDone: styles.scaleExitDone,
+                          }}
+                        >
+                          <BaseIcon name="circle" />
+                        </CSSTransition>
+                        换一批
                       </span>
+                    </div>
+                    <div className={styles.switchContent}>
+                      {this.hotSearchHtml()}
+                    </div>
                   </div>
-                  <div className={styles.switchContent}>
-                    {this.hotSearchHtml()}
-                  </div>
-                </div>
+                }
               </div>
             </CSSTransition>
           </div>

@@ -3,6 +3,10 @@
   height: 58px;
   border-bottom: $border-base;
   display: flex;
+  .logoWrapper {
+    flex: 1;
+    flex-shrink: 0;
+  }
   .logo {
     cursor: pointer;
     width: 100px;
@@ -109,22 +113,30 @@
   .switchTitle {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    .rotate {
-      // transform: rotate(360deg);
-      // transition: all 1s; 
-      animation: rotate 1s linear;
+    align-items: center; // .startRotate,
+    // .endRotate {
+    //   transform: rotate(360deg);
+    //   transition: all 1s;
+    // }
+    // @keyframes rotate {
+    //   0% {
+    //     transform: rotate(0deg);
+    //   }
+    //   50% {
+    //     transform: rotate(360deg);
+    //   }
+    //   100% {
+    //     transform: rotate(720deg);
+    //   }
+    // }
+    .scaleEnter,
+    .scaleExit {
+      transform: rotate(0deg)
     }
-    @keyframes rotate {
-      0% {
-        transform: rotate(0deg);
-      }
-      50% {
-        transform: rotate(360deg);
-      }
-      100% {
-        transform: rotate(720deg);
-      }
+    .scaleEnterActive,
+    .scaleExitActive {
+      transform: rotate(720deg);
+      transition: all .4s linear;
     }
   }
   .switchIcon {
@@ -138,6 +150,7 @@
     font-size: $font-sm;
   }
   .switchItem {
+    cursor: pointer;
     margin-right: 10px;
     padding: 2px 6px;
     border: 1px solid $shallow-gray;
