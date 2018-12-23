@@ -48,6 +48,7 @@ class Header extends Component {
   getSearchHotList = () => {
     this.setState({ hotLoading: true })
     fetchSearchHot().then(res => {
+      console.log('res', res);
       const { list } = res
       const totalPage = Math.ceil(list.length / SIZE)
       let number

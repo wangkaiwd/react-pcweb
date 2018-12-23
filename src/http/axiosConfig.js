@@ -1,6 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-const baseURL = 'https://easy-mock.com/mock/5c0ccee39ae7bb46cb933da4/js/'
+const baseURL  = 'https://easy-mock.com/mock/5c0ccee39ae7bb46cb933da4/js/'
 const instance = axios.create({
   baseURL,
   timeout: 10000
@@ -9,7 +9,7 @@ instance.interceptors.request.use(
   config => {
     if (config.method === 'post') {
       config.headers = { 'content-type': 'application/x-www-form-urlencoded' }
-      config.data = qs.stringify(config.data)
+      config.data    = qs.stringify(config.data)
     }
     return config
   },
@@ -29,6 +29,7 @@ instance.interceptors.response.use(
   },
   err => {
     console.log('服务器响应失败！', err)
+    return Promise.reject(err)
   }
 )
 export default instance
