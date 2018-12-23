@@ -3,7 +3,7 @@ import BaseIcon from '@/components/baseIcon'
 import LoadTip from '@/components/loadTip'
 import classNames from 'classnames'
 import styles from './index.module'
-import { closeExpand, openExpand, getHotSearch } from './store/actionCreators'
+import { closeExpand, openExpand } from './store/actionCreators'
 import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
 import { fetchSearchHot } from '@/api/header'
@@ -17,9 +17,9 @@ const mapDispatchToProps = (dispatch) => {
     onBlur() {
       dispatch(closeExpand(false))
     },
-    getHotSearchList() {
-      dispatch(getHotSearch())
-    }
+    // getHotSearchList() {
+    //   dispatch(getHotSearch())
+    // }
   }
 }
 @connect(mapStateToProps, mapDispatchToProps)
@@ -29,7 +29,9 @@ class Header extends Component {
     isRotate: false,
     number: 0,
     mouseIn: false,
-    hotLoading: false
+    hotLoading: false,
+    totalPage: 0,
+    currentPage: 1
   }
   focusClasses = {
     enter: styles.changeEnter,
@@ -40,20 +42,21 @@ class Header extends Component {
     exitDone: styles.changeExitDone
   }
   componentDidMount() {
-    this.props.getHotSearchList()
+    // this.props.getHotSearchList()
     this.getSearchHotList()
   }
   getSearchHotList = () => {
     this.setState({ hotLoading: true })
     fetchSearchHot().then(res => {
       const { list } = res
+      const totalPage = Math.ceil(list.length / SIZE)
       let number
       if (list.length < SIZE) {
         number = list.length
       } else {
         number = SIZE
       }
-      this.setState({ searchHotList: list, number, hotLoading: false })
+      this.setState({ searchHotList: list, number, hotLoading: false, totalPage })
     })
   }
   // 换一批
@@ -87,6 +90,27 @@ class Header extends Component {
       }
     })
   }
+  // 优化：其实换一批在这里相当于一个前端分页
+  changeList2 = () => {
+    // const { searchHotList } = this.state
+    let { currentPage, totalPage, isRotate } = this.state
+    currentPage++
+    if (currentPage > totalPage) {
+      currentPage = 1
+    }
+    this.setState({ isRotate: !isRotate, currentPage })
+  }
+  hotSearchHtml2 = () => {
+    const { currentPage, searchHotList } = this.state
+    const html = []
+    for (let i = (currentPage - 1) * SIZE; i < currentPage * SIZE; i++) {
+      if (searchHotList[i]) {
+        html.push(<div key={i} className={styles.switchItem}>{searchHotList[i]}</div>)
+      }
+    }
+    return html
+  }
+
   onMouseLeave = () => {
     this.setState({ mouseIn: false })
   }
@@ -96,7 +120,7 @@ class Header extends Component {
   render() {
     const { expand, onFocus, onBlur } = this.props
     const { isRotate, mouseIn, hotLoading } = this.state
-    console.log('hotlist', this.props.searchHotList)
+    // console.log('hotlist', this.props.searchHotList)
     return (
       <div className={styles.header}>
         <div className={styles.logoWrapper}>
@@ -131,7 +155,7 @@ class Header extends Component {
                     <div className={styles.triangle}></div>
                     <div className={styles.switchTitle}>
                       <h3>热门搜索</h3>
-                      <span className={styles.switchIcon} onClick={this.changeList}>
+                      <span className={styles.switchIcon} onClick={this.changeList2}>
                         <CSSTransition
                           in={isRotate}
                           timeout={1000}
@@ -154,7 +178,7 @@ class Header extends Component {
                         hotLoading ?
                           <LoadTip />
                           :
-                          this.hotSearchHtml()
+                          this.hotSearchHtml2()
                       }
                     </div>
                   </div>
