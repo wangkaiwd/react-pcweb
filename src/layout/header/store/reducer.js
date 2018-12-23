@@ -1,20 +1,26 @@
-import { CLOSE_EXPAND, OPEN_EXPAND } from './actionTypes'
+import { CLOSE_EXPAND, OPEN_EXPAND, HOT_SEARCH } from './actionTypes'
 const defaultState = {
-  expand: false
+  expand       : false,
+  searchHotList: []
 }
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case CLOSE_EXPAND:
+    case CLOSE_EXPAND: 
       return {
         ...state,
         expand: action.expand
       }
-    case OPEN_EXPAND:
+    case OPEN_EXPAND: 
       return {
         ...state,
         expand: action.expand
       }
-    default:
+    case HOT_SEARCH: 
+      return {
+        ...state,
+        searchHotList: action.data
+      }
+    default: 
       return state
   }
 }

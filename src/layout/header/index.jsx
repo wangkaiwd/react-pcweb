@@ -3,24 +3,22 @@ import BaseIcon from '@/components/baseIcon'
 import LoadTip from '@/components/loadTip'
 import classNames from 'classnames'
 import styles from './index.module'
-import { closeExpand, openExpand } from './store/actionCreators'
+import { closeExpand, openExpand, getHotSearch } from './store/actionCreators'
 import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
 import { fetchSearchHot } from '@/api/header'
 const SIZE = 10
-const mapStateToProps = (state) => {
-  return {
-    expand: state.header.expand
-  }
-}
+const mapStateToProps = (state) => ({ ...state.header })
 const mapDispatchToProps = (dispatch) => {
   return {
     onFocus: () => {
-      console.log('click');
       dispatch(openExpand(true))
     },
     onBlur() {
       dispatch(closeExpand(false))
+    },
+    getHotSearchList() {
+      dispatch(getHotSearch())
     }
   }
 }
@@ -42,9 +40,10 @@ class Header extends Component {
     exitDone: styles.changeExitDone
   }
   componentDidMount() {
-    this.getSearchHot()
+    this.props.getHotSearchList()
+    this.getSearchHotList()
   }
-  getSearchHot = () => {
+  getSearchHotList = () => {
     this.setState({ hotLoading: true })
     fetchSearchHot().then(res => {
       const { list } = res
@@ -57,9 +56,11 @@ class Header extends Component {
       this.setState({ searchHotList: list, number, hotLoading: false })
     })
   }
+  // 换一批
   changeList = () => {
     const { searchHotList } = this.state
     let { number } = this.state
+    // 计算换一批之后的列表展示
     if (number < searchHotList.length && number + SIZE > searchHotList.length) {
       number = searchHotList.length
     } else if (number === searchHotList.length) {
@@ -95,6 +96,7 @@ class Header extends Component {
   render() {
     const { expand, onFocus, onBlur } = this.props
     const { isRotate, mouseIn, hotLoading } = this.state
+    console.log('hotlist', this.props.searchHotList)
     return (
       <div className={styles.header}>
         <div className={styles.logoWrapper}>
