@@ -4,7 +4,8 @@ export const ajax = (url, method = "post") => {
   return (params = {}) => {
     return new Promise((resolve, reject) => {
       axiosInstance({ url, method, [paramsKey]: params })
-        .then(res => resolve(res), err => reject(err))
+        .then(res => resolve(res))
+        .catch(err => reject(err))
     })
   }
 }
