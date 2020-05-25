@@ -3,6 +3,7 @@ import React from 'react';
 const App = () => (
   <div className="App">
     <Hello message={'Hello World!'}/>
+    <code>const a = 'a'</code>
   </div>
 );
 
