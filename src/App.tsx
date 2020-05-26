@@ -1,16 +1,22 @@
 import React from 'react';
+import Button, { ButtonType } from './components/Button/button';
 
 const App = () => (
   <div className="App">
-    <Hello message={'Hello World!'}/>
-    <code>const a = 'a'</code>
+    <Button btnType={ButtonType.Link} href="https://www.baidu.com">
+      Baidu Link
+    </Button>
+
+    <Button btnType={ButtonType.Primary}>
+      Primary
+    </Button>
+    <Button btnType={ButtonType.Default}>
+      Primary
+    </Button>
+    <Button>
+      Primary
+    </Button>
   </div>
 );
 
 export default App;
-
-interface IHelloProps {message: string;}
-
-const Hello: React.FC<IHelloProps> = (props) => {
-  return <h2>{props.message}</h2>;
-};
