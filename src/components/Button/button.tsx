@@ -13,17 +13,28 @@ export enum ButtonType {
   Link = 'link'
 }
 
-interface ButtonProps extends HTMLAttributes<HTMLButtonElement | HTMLLinkElement> {
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize,
   btnType?: ButtonType,
-  href?: string
+  href?: string,
+  disabled?: boolean,
 }
 
-// enjoy-ui-button, enjoy-ui-button-lg, ...
+const uiPrefix = 'enjoy-ui';
+const clsPre = `${uiPrefix}-button`;
 const Button: FC<ButtonProps> = (props) => {
-  const { btnType = ButtonType.Default, href, children, className } = props;
-  const cls = classnames(className, 'enjoy-ui-button', {
-    [`enjoy-ui-button-${btnType}`]: btnType
+  const {
+    btnType = ButtonType.Default,
+    href,
+    children,
+    className,
+    size = ButtonSize.Large,
+    disabled = false
+  } = props;
+  const cls = classnames(className, clsPre, {
+    [`${clsPre}-${btnType}`]: btnType,
+    [`${clsPre}-${size}`]: size,
+    [`${clsPre}-${disabled}`]: disabled,
   });
   if (btnType === ButtonType.Link) {
     return <a className={cls} href={href}>{children}</a>;
