@@ -1,5 +1,5 @@
 import React from 'react';
-import Button, { ButtonType } from './components/Button/button';
+import Button, { ButtonSize, ButtonType } from './components/Button/button';
 
 const App = () => (
   <div className="App">
@@ -7,14 +7,21 @@ const App = () => (
       Baidu Link
     </Button>
 
+    <Button disabled btnType={ButtonType.Link} href="https://www.baidu.com">
+      Disabled Link
+    </Button>
+
     <Button btnType={ButtonType.Primary}>
       Primary
     </Button>
-    <Button btnType={ButtonType.Default}>
-      Primary
+    <Button disabled btnType={ButtonType.Primary}>
+      Disabled Primary
+    </Button>
+    <Button size={ButtonSize.Small} btnType={ButtonType.Danger}>
+      Danger
     </Button>
     <Button>
-      Primary
+      Default
     </Button>
   </div>
 );

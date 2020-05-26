@@ -1,9 +1,11 @@
 import React, { FC, HTMLAttributes } from 'react';
+import './button.scss';
 import classnames from 'classnames';
 
-enum ButtonSize {
+export enum ButtonSize {
   Large = 'lg',
-  Small = 'sm'
+  Small = 'sm',
+  Normal = 'normal'
 }
 
 export enum ButtonType {
@@ -28,19 +30,20 @@ const Button: FC<ButtonProps> = (props) => {
     href,
     children,
     className,
-    size = ButtonSize.Large,
-    disabled = false
+    size = ButtonSize.Normal,
+    disabled = false,
+    ...rest
   } = props;
   const cls = classnames(className, clsPre, {
     [`${clsPre}-${btnType}`]: btnType,
     [`${clsPre}-${size}`]: size,
-    [`${clsPre}-${disabled}`]: disabled,
+    disabled,
   });
   if (btnType === ButtonType.Link) {
     return <a className={cls} href={href}>{children}</a>;
   }
   return (
-    <button className={cls}>
+    <button className={cls} {...rest}>
       {children}
     </button>
   );
