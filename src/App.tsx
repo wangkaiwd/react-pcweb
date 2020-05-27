@@ -3,7 +3,7 @@ import Button, { ButtonSize, ButtonType } from './components/Button/button';
 
 const App = () => (
   <div className="App">
-    <Button btnType={ButtonType.Link} href="https://www.baidu.com">
+    <Button target="_blank" btnType={ButtonType.Link} href="https://www.baidu.com">
       Baidu Link
     </Button>
 
@@ -11,7 +11,7 @@ const App = () => (
       Disabled Link
     </Button>
 
-    <Button btnType={ButtonType.Primary}>
+    <Button className="custom" btnType={ButtonType.Primary}>
       Primary
     </Button>
     <Button disabled btnType={ButtonType.Primary}>

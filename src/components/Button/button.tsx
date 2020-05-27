@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { AnchorHTMLAttributes, ButtonHTMLAttributes, FC, HTMLAttributes } from 'react';
 import './button.scss';
 import classnames from 'classnames';
 
@@ -15,19 +15,22 @@ export enum ButtonType {
   Link = 'link'
 }
 
-interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+interface BaseButtonProps {
   size?: ButtonSize,
   btnType?: ButtonType,
-  href?: string,
-  disabled?: boolean,
 }
 
+// 这里ButtonHTMLAttributes中传入的泛型参数具体作用？
+type NativeButtonProps = ButtonHTMLAttributes<HTMLElement>
+type AnchorButtonProps = AnchorHTMLAttributes<HTMLElement>
+// Intersection Types
+// Global Utility Types: Partial<T>, Constructs a type with all properties of T set to optional.
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps & BaseButtonProps>
 const uiPrefix = 'enjoy-ui';
 const clsPre = `${uiPrefix}-button`;
 const Button: FC<ButtonProps> = (props) => {
   const {
     btnType = ButtonType.Default,
-    href,
     children,
     className,
     size = ButtonSize.Normal,
@@ -40,7 +43,7 @@ const Button: FC<ButtonProps> = (props) => {
     disabled,
   });
   if (btnType === ButtonType.Link) {
-    return <a className={cls} href={href}>{children}</a>;
+    return <a className={cls} {...rest}>{children}</a>;
   }
   return (
     <button className={cls} {...rest}>
