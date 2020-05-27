@@ -1,4 +1,4 @@
-import React, { AnchorHTMLAttributes, ButtonHTMLAttributes, FC, HTMLAttributes } from 'react';
+import React, { AnchorHTMLAttributes, ButtonHTMLAttributes, FC } from 'react';
 import './button.scss';
 import classnames from 'classnames';
 
