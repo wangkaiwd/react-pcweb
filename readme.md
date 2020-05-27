@@ -22,3 +22,8 @@
 * 项目目录结构
 * `CSS`变量表配置
 * `CSS`初始化样式`normalize.css`
+
+### 测试用例
+`jest` + [`react-testing-library`](https://github.com/facebook/create-react-app/pull/7881)
+
+* [Running Tests](https://create-react-app.dev/docs/running-tests)
