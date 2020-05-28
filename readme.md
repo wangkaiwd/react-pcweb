@@ -36,5 +36,12 @@
   * mock function
   
 ##### react-testing-library
+> [cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet)
 * simulate event trigger
   * fireEvent
+* queries
+  * getBy: not match will throw
+  * queryBy: will return null
+
+##### 编辑器测试技巧
+> 一定要会使用命令行
