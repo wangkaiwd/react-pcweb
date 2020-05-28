@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 
 type MenuMode = 'vertical' | 'horizontal'
