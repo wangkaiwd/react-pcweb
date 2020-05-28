@@ -2,12 +2,6 @@ import Button, { ButtonProps, ButtonSize, ButtonType } from './button';
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
-test('test first react case', () => {
-  const wrapper = render(<Button>Nice</Button>);
-  const element = wrapper.queryByText('Nice');
-  expect(element).toBeTruthy();
-});
-
 const defaultProps = {
   onClick: jest.fn()
 };
