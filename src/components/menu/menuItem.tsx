@@ -1,21 +1,32 @@
-import React, { FC, LiHTMLAttributes } from 'react';
+import React, { FC, LiHTMLAttributes, useContext } from 'react';
+import './menuItem.scss';
 import classNames from 'classnames';
+import { MenuContext } from './menu';
 
 interface MenuItemProps extends LiHTMLAttributes<HTMLLIElement> {
-  index?: number;
+  index: string;
   disabled?: boolean;
 }
 
 const clsPre = 'enjoy-menu-item';
 const MenuItem: FC<MenuItemProps> = (props) => {
-  const { children, className, disabled, ...rest } = props;
+  const { currentIndex, onSelect } = useContext(MenuContext);
+  const { children, className, disabled, index, ...rest } = props;
   const cls = classNames(
     className,
     clsPre,
-    { disabled }
+    {
+      active: index === currentIndex,
+      disabled
+    }
   );
+  const onClick = () => {
+    if (onSelect) {
+      onSelect(index);
+    }
+  };
   return (
-    <li className={cls} {...rest}>
+    <li className={cls} {...rest} onClick={onClick}>
       {children}
     </li>
   );
