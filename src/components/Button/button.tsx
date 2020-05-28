@@ -26,8 +26,7 @@ type AnchorButtonProps = AnchorHTMLAttributes<HTMLElement>
 // Intersection Types
 // Global Utility Types: Partial<T>, Constructs a type with all properties of T set to optional.
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps & BaseButtonProps>
-const uiPrefix = 'enjoy-ui';
-const clsPre = `${uiPrefix}-button`;
+const clsPre = 'enjoy-button';
 const Button: FC<ButtonProps> = (props) => {
   const {
     btnType = ButtonType.Default,
