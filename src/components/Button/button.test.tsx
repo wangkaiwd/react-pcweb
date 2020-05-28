@@ -43,9 +43,10 @@ describe('Button component', () => {
   });
   it('should render disabled button when disabled set to true', () => {
     const wrapper = render(<Button {...disabledProps}>Click</Button>);
-    const element = wrapper.getByText('Click');
+    const element = wrapper.getByText('Click') as HTMLButtonElement;
     fireEvent.click(element);
     expect(disabledProps.onClick).toBeCalled();
+    expect(element.disabled);
     expect(element).toHaveClass('disabled');
   });
 });
