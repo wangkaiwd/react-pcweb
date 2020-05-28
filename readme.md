@@ -27,3 +27,14 @@
 `jest` + [`react-testing-library`](https://github.com/facebook/create-react-app/pull/7881)
 
 * [Running Tests](https://create-react-app.dev/docs/running-tests)
+
+#### 测试相关知识点
+
+##### jest
+* matcher(通过`jest-dom`进行了加强)
+* mock
+  * mock function
+  
+##### react-testing-library
+* simulate event trigger
+  * fireEvent
