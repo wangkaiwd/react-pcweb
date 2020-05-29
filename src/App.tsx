@@ -4,13 +4,13 @@ import MenuItem from './components/menu/menuItem';
 import Menu from './components/menu/menu';
 
 const App = () => {
-  const [index, setIndex] = useState('0');
+  const [name, setName] = useState('0');
   return (
     <div className="App">
-      <Menu selectedIndex={index} onSelect={(index) => {setIndex(index);}}>
-        <MenuItem index="0">mneu1</MenuItem>
-        <MenuItem index="1">mneu2</MenuItem>
-        <MenuItem index="2">mneu3</MenuItem>
+      <Menu selectedName={name} onSelect={(name) => {setName(name);}}>
+        <MenuItem name="0">mneu1</MenuItem>
+        <MenuItem name="1">mneu2</MenuItem>
+        <MenuItem name="2">mneu3</MenuItem>
       </Menu>
       <Button target="_blank" btnType={ButtonType.Link} href="https://www.baidu.com">
         Baidu Link

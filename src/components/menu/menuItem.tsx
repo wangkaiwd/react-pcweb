@@ -4,25 +4,25 @@ import classNames from 'classnames';
 import { MenuContext } from './menu';
 
 interface MenuItemProps extends LiHTMLAttributes<HTMLLIElement> {
-  index: string;
+  name: string;
   disabled?: boolean;
 }
 
 const clsPre = 'enjoy-menu-item';
 const MenuItem: FC<MenuItemProps> = (props) => {
-  const { currentIndex, onSelect } = useContext(MenuContext);
-  const { children, className, disabled, index, ...rest } = props;
+  const { currentName, onSelect } = useContext(MenuContext);
+  const { children, className, disabled, name, ...rest } = props;
   const cls = classNames(
     className,
     clsPre,
     {
-      active: index === currentIndex,
+      active: name === currentName,
       disabled
     }
   );
   const onClick = () => {
     if (onSelect) {
-      onSelect(index);
+      onSelect(name);
     }
   };
   return (
