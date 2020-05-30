@@ -37,6 +37,8 @@
 * matcher(通过[`jest-dom`](https://github.com/testing-library/jest-dom) 进行了加强)
 * mock
   * mock function
+
+* beforeEach
   
 ##### react-testing-library
 > [cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet)
@@ -45,6 +47,8 @@
 * queries
   * getBy: not match will throw
   * queryBy: will return null
+* [render](https://testing-library.com/docs/react-testing-library/api#render)
+* [cleanup](https://testing-library.com/docs/react-testing-library/api#cleanup)
 
 ##### 编辑器测试技巧
 > 不能过度依赖于工具，一定要会使用命令行，这样当工具出错或者我们切换工具的时候才能游刃有余。

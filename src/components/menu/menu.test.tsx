@@ -52,6 +52,10 @@ describe("Menu and MenuItem component", () => {
     // expect(testProps.onSelect).not.toHaveBeenCalledWith('1');
   });
   it("should render correct mode", function () {
+    // render: Render into a container which is appended to document.body
+    // cleanup: Unmounts React tree that were mounted with render
+    // 请注意：如果你正在使用的框架(如mocha,Jest和Jasmine)支持全局afterEach，这(cleanup)将会被自动地完成。
+    // 如果你的框架不支持全局afterEach，你需要手动做清理(cleanup)在每次测试之后
     cleanup();
     const wrapper = render(generateMenu({ mode: "vertical" }));
     const menuElement = wrapper.getByTestId("test-menu");
