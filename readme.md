@@ -22,16 +22,19 @@
 * 项目目录结构
 * `CSS`变量表配置
 * `CSS`初始化样式`normalize.css`
-
+* `create-react-app`创建项目
 ### 测试用例
-`jest` + [`react-testing-library`](https://github.com/facebook/create-react-app/pull/7881)
+从`v3.3.0`版本开始，`create-react-app`默认集成了以下测试工具：
+* `jest` 
+* [`react-testing-library`](https://github.com/facebook/create-react-app/pull/7881)
 
+阅读`create-react-app`的测试相关章节：
 * [Running Tests](https://create-react-app.dev/docs/running-tests)
 
 #### 测试相关知识点
 
 ##### jest
-* matcher(通过`jest-dom`进行了加强)
+* matcher(通过[`jest-dom`](https://github.com/testing-library/jest-dom) 进行了加强)
 * mock
   * mock function
   
@@ -44,4 +47,5 @@
   * queryBy: will return null
 
 ##### 编辑器测试技巧
-> 一定要会使用命令行
+> 不能过度依赖于工具，一定要会使用命令行，这样当工具出错或者我们切换工具的时候才能游刃有余。
+* [`navigate to test`](https://www.jetbrains.com/webstorm/guide/tips/navigate-to-test/)
