@@ -30,11 +30,11 @@ const App = () => {
           setName(name);
         }}
       >
-        <MenuItem name="0">menu1</MenuItem>
-        <MenuItem disabled name="1">
+        <MenuItem name="1">menu1</MenuItem>
+        <MenuItem disabled name="2">
           menu2
         </MenuItem>
-        <MenuItem name="2">menu3</MenuItem>
+        <MenuItem name="3">menu3</MenuItem>
         <SubMenu name="4" title={"dropdown"}>
           <MenuItem name="4-1">dropdown1</MenuItem>
           <MenuItem name="4-2">dropdown2</MenuItem>
