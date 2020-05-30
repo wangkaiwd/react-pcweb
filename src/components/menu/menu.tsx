@@ -1,6 +1,7 @@
-import React, { createContext, FC } from "react";
+import React, { createContext, FC, FunctionComponentElement } from "react";
 import "./menu.scss";
 import classNames from "classnames";
+import { MenuItemProps } from "./menuItem";
 
 type MenuMode = "vertical" | "horizontal";
 type SelectCallback = (selectedIndex: string) => void;
@@ -40,11 +41,26 @@ const Menu: FC<MenuProps> = (props) => {
     currentName,
     onSelect,
   };
+  const renderChildren = () => {
+    // 在children内包含的每个直接子元素上调用一个函数，函数的this为thisArg
+    // https://reactjs.org/docs/react-api.html#reactchildren
+    // this.props.children 包含各种类型：数组，函数，或者null/undefined
+    return React.Children.map(children, (child, index) => {
+      const childElement = child as FunctionComponentElement<MenuItemProps>;
+      if (childElement.type.displayName === "MenuItem") {
+        return childElement;
+      } else {
+        console.error(
+          "Warning: Menu has a child which is not a MenuItem component"
+        );
+      }
+    });
+  };
   return (
     <MenuContext.Provider value={passContext}>
       {/*data-testid：方便测试时获取元素*/}
       <ul className={cls} data-testid="test-menu">
-        {children}
+        {renderChildren()}
       </ul>
     </MenuContext.Provider>
   );

@@ -1,32 +1,36 @@
-import React, { AnchorHTMLAttributes, ButtonHTMLAttributes, FC } from 'react';
-import './button.scss';
-import classnames from 'classnames';
+import React, { AnchorHTMLAttributes, ButtonHTMLAttributes, FC } from "react";
+import "./button.scss";
+import classnames from "classnames";
 
 export enum ButtonSize {
-  Large = 'lg',
-  Small = 'sm',
-  Normal = 'normal'
+  Large = "lg",
+  Small = "sm",
+  Normal = "normal",
 }
 
 export enum ButtonType {
-  Default = 'default',
-  Primary = 'primary',
-  Danger = 'danger',
-  Link = 'link'
+  Default = "default",
+  Primary = "primary",
+  Danger = "danger",
+  Link = "link",
 }
 
 interface BaseButtonProps {
-  size?: ButtonSize,
-  btnType?: ButtonType,
+  size?: ButtonSize;
+  btnType?: ButtonType;
 }
 
 // 这里ButtonHTMLAttributes中传入的泛型参数具体作用？
-type NativeButtonProps = ButtonHTMLAttributes<HTMLElement>
-type AnchorButtonProps = AnchorHTMLAttributes<HTMLElement>
+type NativeButtonProps = ButtonHTMLAttributes<HTMLElement>;
+type AnchorButtonProps = AnchorHTMLAttributes<HTMLElement>;
 // Intersection Types
 // Global Utility Types: Partial<T>, Constructs a type with all properties of T set to optional.
-export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps & BaseButtonProps>
-const clsPre = 'enjoy-button';
+export type ButtonProps = Partial<
+  NativeButtonProps & AnchorButtonProps & BaseButtonProps
+>;
+
+// 检测children的类型，只能是MenuItem
+const clsPre = "enjoy-button";
 const Button: FC<ButtonProps> = (props) => {
   const {
     btnType = ButtonType.Default,
@@ -42,7 +46,11 @@ const Button: FC<ButtonProps> = (props) => {
     disabled,
   });
   if (btnType === ButtonType.Link) {
-    return <a className={cls} {...rest}>{children}</a>;
+    return (
+      <a className={cls} {...rest}>
+        {children}
+      </a>
+    );
   }
   return (
     <button className={cls} {...rest}>
