@@ -2,7 +2,7 @@ import React, { FC, LiHTMLAttributes, useContext } from "react";
 import classNames from "classnames";
 import { MenuContext } from "./menu";
 
-interface MenuItemProps extends LiHTMLAttributes<HTMLLIElement> {
+export interface MenuItemProps extends LiHTMLAttributes<HTMLLIElement> {
   name: string;
   disabled?: boolean;
 }

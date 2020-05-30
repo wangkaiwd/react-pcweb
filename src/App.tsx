@@ -26,7 +26,9 @@ const App = () => {
         }}
       >
         <MenuItem name="0">mneu1</MenuItem>
-        <MenuItem name="1">mneu2</MenuItem>
+        <MenuItem disabled name="1">
+          mneu2
+        </MenuItem>
         <MenuItem name="2">mneu3</MenuItem>
       </Menu>
 

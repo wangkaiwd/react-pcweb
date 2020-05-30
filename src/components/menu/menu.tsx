@@ -5,7 +5,7 @@ import classNames from "classnames";
 type MenuMode = "vertical" | "horizontal";
 type SelectCallback = (selectedIndex: string) => void;
 
-interface MenuProps {
+export interface MenuProps {
   defaultSelectName?: string;
   className?: string;
   selectedName?: string;
@@ -42,7 +42,10 @@ const Menu: FC<MenuProps> = (props) => {
   };
   return (
     <MenuContext.Provider value={passContext}>
-      <ul className={cls}>{children}</ul>
+      {/*data-testid：方便测试时获取元素*/}
+      <ul className={cls} data-testid="test-menu">
+        {children}
+      </ul>
     </MenuContext.Provider>
   );
 };
