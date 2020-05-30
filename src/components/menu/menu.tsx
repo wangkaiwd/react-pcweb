@@ -47,7 +47,8 @@ const Menu: FC<MenuProps> = (props) => {
     // this.props.children 包含各种类型：数组，函数，或者null/undefined
     return React.Children.map(children, (child, index) => {
       const childElement = child as FunctionComponentElement<MenuItemProps>;
-      if (childElement.type.displayName === "MenuItem") {
+      const { displayName } = childElement.type;
+      if (displayName === "MenuItem" || displayName === "SubMenu") {
         return childElement;
       } else {
         console.error(
@@ -59,9 +60,9 @@ const Menu: FC<MenuProps> = (props) => {
   return (
     <MenuContext.Provider value={passContext}>
       {/*data-testid：方便测试时获取元素*/}
-      <ul className={cls} data-testid="test-menu">
+      <div className={cls} data-testid="test-menu">
         {renderChildren()}
-      </ul>
+      </div>
     </MenuContext.Provider>
   );
 };

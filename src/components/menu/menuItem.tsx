@@ -1,8 +1,8 @@
-import React, { FC, LiHTMLAttributes, useContext } from "react";
+import React, { FC, HTMLAttributes, useContext } from "react";
 import classNames from "classnames";
 import { MenuContext } from "./menu";
 
-export interface MenuItemProps extends LiHTMLAttributes<HTMLLIElement> {
+export interface MenuItemProps extends HTMLAttributes<HTMLDivElement> {
   name: string;
   disabled?: boolean;
 }
@@ -21,9 +21,9 @@ const MenuItem: FC<MenuItemProps> = (props) => {
     }
   };
   return (
-    <li className={cls} {...rest} onClick={onClick}>
+    <div className={cls} {...rest} onClick={onClick}>
       {children}
-    </li>
+    </div>
   );
 };
 // displayName:https://reactjs.org/docs/react-component.html#displayname

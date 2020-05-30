@@ -30,5 +30,27 @@
         border-bottom: none;
       }
     }
+    .enjoy-sub-menu {
+      &-title {
+        padding: $menu-item-padding-y $menu-item-padding-x;
+        border-left: $menu-item-active-border-width solid transparent;
+        cursor: pointer;
+        transition: $menu-transition;
+        &.disabled {
+          color: $menu-item-disabled-color;
+          cursor: default;
+          pointer-events: none;
+        }
+        &:hover {
+          border-left: $menu-item-active-border-width solid
+            $menu-item-active-color;
+          border-bottom: none;
+          color: $menu-item-active-color;
+        }
+      }
+      .enjoy-menu-item {
+        padding-left: $menu-item-padding-x * 2;
+      }
+    }
   }
 }

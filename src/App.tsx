@@ -3,6 +3,7 @@ import Button, { ButtonSize, ButtonType } from "./components/button/button";
 import MenuItem from "./components/menu/menuItem";
 import Menu from "./components/menu/menu";
 import "./App.scss";
+import SubMenu from "./components/menu/subMenu";
 
 const App = () => {
   const [name, setName] = useState("0");
@@ -30,6 +31,10 @@ const App = () => {
           menu2
         </MenuItem>
         <MenuItem name="2">menu3</MenuItem>
+        <SubMenu name="4" title={"dropdown"}>
+          <MenuItem name="4-1">dropdown1</MenuItem>
+          <MenuItem name="4-2">dropdown2</MenuItem>
+        </SubMenu>
       </Menu>
 
       <Button
