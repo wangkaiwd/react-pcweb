@@ -39,7 +39,7 @@ const SubMenu: FC<SubMenuProps> = (props) => {
         {title}
         <span>{expand ? "展开" : "闭合"}</span>
       </div>
-      {expand && renderChildren}
+      {expand && <div className={`${clsPre}-popover`}>{renderChildren}</div>}
     </div>
   );
 };

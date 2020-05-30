@@ -24,7 +24,7 @@ export const MenuContext = createContext<IMenuContext>({});
 const clsPre = "enjoy-menu";
 const Menu: FC<MenuProps> = (props) => {
   const {
-    mode,
+    mode = "horizontal",
     children,
     className,
     defaultSelectName,

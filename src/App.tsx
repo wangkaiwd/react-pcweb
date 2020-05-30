@@ -18,6 +18,10 @@ const App = () => {
         <MenuItem name="1">menu1</MenuItem>
         <MenuItem name="2">menu2</MenuItem>
         <MenuItem name="3">menu3</MenuItem>
+        <SubMenu name="4" title={"dropdown"}>
+          <MenuItem name="4-1">dropdown1</MenuItem>
+          <MenuItem name="4-2">dropdown2</MenuItem>
+        </SubMenu>
       </Menu>
       <Menu
         selectedName={name}
