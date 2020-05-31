@@ -23,6 +23,7 @@ const App = () => {
           <MenuItem name="4-2">dropdown2</MenuItem>
         </SubMenu>
       </Menu>
+      <div style={{ marginTop: "20px" }}></div>
       <Menu
         selectedName={name}
         mode={"vertical"}

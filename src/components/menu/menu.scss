@@ -76,20 +76,35 @@
     }
   }
   &-horizontal {
+    .enjoy-menu-item {
+      border-bottom: $menu-item-active-border-width solid transparent;
+      transition: color 0.1s ease-in-out;
+      &.active,
+      &:hover {
+        border-bottom: $menu-item-active-border-width solid
+          $menu-item-active-color;
+      }
+    }
     .enjoy-sub-menu {
       position: relative;
+      &-title {
+        &:hover {
+          border-bottom: $menu-item-active-border-width solid
+            $menu-item-active-color;
+        }
+      }
       &-popover {
         top: calc(100% + 4px);
         left: 0;
         position: absolute;
         box-shadow: $menu-box-shadow;
-        border: $border-width solid $menu-border-color;
+        outline: $border-width solid $menu-border-color;
       }
       .enjoy-menu-item {
-        border: none;
+        border-bottom: none;
         &.active,
         &:hover {
-          border: none;
+          border-bottom: none;
         }
       }
     }

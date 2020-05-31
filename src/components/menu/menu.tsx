@@ -8,6 +8,7 @@ type SelectCallback = (selectedIndex: string) => void;
 
 export interface MenuProps {
   defaultSelectName?: string;
+  defaultOpenNames?: string[];
   className?: string;
   selectedName?: string;
   mode?: MenuMode;
@@ -18,6 +19,8 @@ export interface MenuProps {
 interface IMenuContext {
   currentName?: string;
   onSelect?: SelectCallback;
+  mode?: MenuMode;
+  defaultOpenNames?: string[];
 }
 
 export const MenuContext = createContext<IMenuContext>({});
@@ -30,6 +33,7 @@ const Menu: FC<MenuProps> = (props) => {
     defaultSelectName,
     selectedName,
     onSelect,
+    defaultOpenNames,
     ...rest
   } = props;
   const currentName = selectedName || defaultSelectName || "";
@@ -40,6 +44,8 @@ const Menu: FC<MenuProps> = (props) => {
   const passContext: IMenuContext = {
     currentName,
     onSelect,
+    mode,
+    defaultOpenNames,
   };
   const renderChildren = () => {
     // 在children内包含的每个直接子元素上调用一个函数，函数的this为thisArg
