@@ -37,10 +37,15 @@ const SubMenu: FC<SubMenuProps> = (props) => {
     setExpanded(!expanded);
   };
   const onMouseEnter = () => {
-    setExpanded(!expanded);
+    setExpanded(true);
+  };
+  const onMouseLeave = () => {
+    setExpanded(false);
   };
   const listener =
-    menuContext.mode === "vertical" ? { onClick } : { onMouseEnter };
+    menuContext.mode === "vertical"
+      ? { onClick }
+      : { onMouseEnter, onMouseLeave };
   return (
     <div className={cls} {...rest}>
       <div

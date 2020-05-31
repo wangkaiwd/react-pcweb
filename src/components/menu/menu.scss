@@ -32,10 +32,6 @@
         color: $menu-item-active-color;
       }
     }
-    &-popover {
-      background-color: #fff;
-      border-radius: $border-radius;
-    }
     .enjoy-menu-item {
       padding-left: $menu-item-padding-x * 2;
     }
@@ -98,7 +94,8 @@
         left: 0;
         position: absolute;
         box-shadow: $menu-box-shadow;
-        outline: $border-width solid $menu-border-color;
+        background-color: #fff;
+        border-radius: $border-radius;
       }
       .enjoy-menu-item {
         border-bottom: none;
